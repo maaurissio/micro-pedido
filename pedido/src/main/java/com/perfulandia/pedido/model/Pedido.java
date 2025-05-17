@@ -3,6 +3,8 @@ package com.perfulandia.pedido.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,6 +40,7 @@ public class Pedido {
     @Column(length = 250, nullable = true)
     private String direccionEnvio;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/Santiago")
     private LocalDateTime fechaCreacion;
 
     private double total;
