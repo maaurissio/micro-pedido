@@ -1,0 +1,52 @@
+package com.perfulandia.pedido.model;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@Table(name = "pedido")
+@NoArgsConstructor
+@AllArgsConstructor
+
+public class Pedido {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id_pedido;
+
+    @Column(length = 10, nullable = true)
+    private int clienteId;
+
+    @Enumerated(EnumType.STRING)
+    private EstadoPedido estadoPedido;
+
+    @Column(length = 250, nullable = true)
+    private String direccionEnvio;
+
+    private LocalDateTime fechaCreacion;
+
+    private double total;
+
+    //Metodo para actualizar el estado del pedido
+    public void actualizarEstado(EstadoPedido estadoPedido){
+        this.estadoPedido = estadoPedido;
+    }
+
+    @OneToMany(mappedBy = "id_producto", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Detalle> productos;
+}
