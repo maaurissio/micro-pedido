@@ -1,0 +1,20 @@
+{
+    "idCliente": 12,
+    "estadoPedido": "PENDIENTE",
+    "direccionEnvio": "Coronel la peña 2",
+    "total": 600.78
+}
+-------------
+{
+    "idCliente": 18,
+    "estadoPedido": "ENVIADO",
+    "direccionEnvio": "Angol botilleria",
+    "total": 289.92
+}
+-------------
+{
+    "idCliente": 27,
+    "estadoPedido": "ENTREGADO",
+    "direccionEnvio": "363 Chuquicamata",
+    "total": 3000
+}
