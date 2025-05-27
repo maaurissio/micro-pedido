@@ -1,20 +1,152 @@
 {
-    "idCliente": 12,
-    "estadoPedido": "PENDIENTE",
-    "direccionEnvio": "Coronel la peña 2",
-    "total": 600.78
-}
--------------
+    "idCliente": 1,
+    "estadoPedido": "CREADO",
+    "direccionEnvio": "Av. Providencia 123, Santiago",
+    "total": 119.97,
+    "productos": [
+      {
+        "idProducto": 1,
+        "cantidad": 3,
+        "precioUnitario": 39.99,
+        "subTotal": 119.97
+      }
+    ]
+  }
+-----------------------------
 {
-    "idCliente": 18,
+    "idCliente": 2,
+    "estadoPedido": "PROCESANDO",
+    "direccionEnvio": "Calle Los Álamos 456, Valparaíso",
+    "total": 132.50,
+    "productos": [
+      {
+        "idProducto": 2,
+        "cantidad": 2,
+        "precioUnitario": 66.25,
+        "subTotal": 132.50
+      }
+    ]
+  }
+-----------------------------
+{
+    "idCliente": 3,
     "estadoPedido": "ENVIADO",
-    "direccionEnvio": "Angol botilleria",
-    "total": 289.92
-}
--------------
+    "direccionEnvio": "Av. O'Higgins 890, Concepción",
+    "total": 59.99,
+    "productos": [
+      {
+        "idProducto": 3,
+        "cantidad": 1,
+        "precioUnitario": 59.99,
+        "subTotal": 59.99
+      }
+    ]
+  }
+-----------------------------
 {
-    "idCliente": 27,
+    "idCliente": 4,
     "estadoPedido": "ENTREGADO",
-    "direccionEnvio": "363 Chuquicamata",
-    "total": 3000
-}
+    "direccionEnvio": "Camino Real 1234, La Serena",
+    "total": 105.00,
+    "productos": [
+      {
+        "idProducto": 4,
+        "cantidad": 3,
+        "precioUnitario": 35.00,
+        "subTotal": 105.00
+      }
+    ]
+  }
+-----------------------------
+{
+    "idCliente": 5,
+    "estadoPedido": "CREADO",
+    "direccionEnvio": "Pasaje Estrella 56, Antofagasta",
+    "total": 148.50,
+    "productos": [
+      {
+        "idProducto": 5,
+        "cantidad": 2,
+        "precioUnitario": 74.25,
+        "subTotal": 148.50
+      }
+    ]
+  }
+-----------------------------
+{
+    "idCliente": 6,
+    "estadoPedido": "PROCESANDO",
+    "direccionEnvio": "Av. Italia 234, Santiago",
+    "total": 98.75,
+    "productos": [
+      {
+        "idProducto": 6,
+        "cantidad": 1,
+        "precioUnitario": 98.75,
+        "subTotal": 98.75
+      }
+    ]
+  }
+-----------------------------
+{
+    "idCliente": 7,
+    "estadoPedido": "ENVIADO",
+    "direccionEnvio": "Calle Las Rosas 1010, Temuco",
+    "total": 132.00,
+    "productos": [
+      {
+        "idProducto": 7,
+        "cantidad": 2,
+        "precioUnitario": 66.00,
+        "subTotal": 132.00
+      }
+    ]
+  }
+-----------------------------
+{
+    "idCliente": 8,
+    "estadoPedido": "ENTREGADO",
+    "direccionEnvio": "Av. Kennedy 678, Viña del Mar",
+    "total": 120.40,
+    "productos": [
+      {
+        "idProducto": 8,
+        "cantidad": 1,
+        "precioUnitario": 120.40,
+        "subTotal": 120.40
+      }
+    ]
+  }
+-----------------------------
+{
+    "idCliente": 9,
+    "estadoPedido": "CREADO",
+    "direccionEnvio": "Camino del Inca 345, Rancagua",
+    "total": 99.98,
+    "productos": [
+      {
+        "idProducto": 9,
+        "cantidad": 2,
+        "precioUnitario": 49.99,
+        "subTotal": 99.98
+      }
+    ]
+  }
+-----------------------------
+{
+    "idCliente": 10,
+    "estadoPedido": "ENTREGADO",
+    "direccionEnvio": "Calle San Martín 999, Talca",
+    "total": 175.20,
+    "productos": [
+      {
+        "idProducto": 10,
+        "cantidad": 2,
+        "precioUnitario": 87.60,
+        "subTotal": 175.20
+      }
+    ]
+  }
+-----------------------------
+
+-----------------------------
