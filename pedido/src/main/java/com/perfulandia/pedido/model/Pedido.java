@@ -29,10 +29,10 @@ public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_pedido;
+    private int idPedido;
 
     @Column(length = 10, nullable = true)
-    private int clienteId;
+    private int idCliente;
 
     @Enumerated(EnumType.STRING)
     private EstadoPedido estadoPedido;
@@ -43,13 +43,14 @@ public class Pedido {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "America/Santiago")
     private LocalDateTime fechaCreacion;
 
-    private double total;
+    private double total; //Total del pedido (suma de los subtotales de los detalles)
 
     //Metodo para actualizar el estado del pedido
     public void actualizarEstado(EstadoPedido estadoPedido){
         this.estadoPedido = estadoPedido;
     }
 
-    @OneToMany(mappedBy = "id_producto", cascade = CascadeType.ALL, orphanRemoval = true)
+    
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Detalle> productos;
 }

@@ -23,16 +23,16 @@ public class Detalle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_detalle;
+    private int idDetalle;
 
-    private int id_producto;
+    private int idProducto; //Simulando la clase producto
 
-    private int cantidad;
-    private double precioUnitario;
-    private double subTotal;
+    private int cantidad; //Cantidad de productos
+    private double precioUnitario; //Precio unitario del producto
+    private double subTotal; //SubTotal del detalle (cantidad * precioUnitario)
 
     @JsonIgnore
     @ManyToOne()
-    @JoinColumn(name = "id_pedido")
+    @JoinColumn(name = "idPedido")
     private Pedido pedido;
 }
