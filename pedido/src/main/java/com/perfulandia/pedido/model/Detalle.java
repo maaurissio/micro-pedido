@@ -23,7 +23,7 @@ public class Detalle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idDetalle;
+    private Long idDetalle;
 
     private int idProducto; //Simulando la clase producto
 

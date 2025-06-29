@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.perfulandia.pedido.model.Pedido;
 
 @Repository
-public interface PedidoRepository extends JpaRepository<Pedido, Integer>{
+public interface PedidoRepository extends JpaRepository<Pedido, Long>{
     
 }

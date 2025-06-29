@@ -1,6 +1,7 @@
 package com.perfulandia.pedido.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,5 +30,16 @@ public class DetalleService {
             throw new RuntimeException("No existe un Pedido con el ID " + detalle.getPedido().getIdPedido());
         }
         return detalleRepository.save(detalle);
+    }
+
+    public Optional<Detalle> buscarPorId(Long id) {
+        return detalleRepository.findById(id);
+    }
+
+    public void eliminarDetalle(Long idDetalle){
+        if(!detalleRepository.existsById(idDetalle)){
+            throw new IllegalArgumentException("Reseña no encontrada");
+        }
+        detalleRepository.deleteById(idDetalle);
     }
 }

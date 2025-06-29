@@ -32,8 +32,8 @@ public class TestPedidoService {
 
     @Test
     void testListarPedidos() {
-        Pedido p1 = new Pedido(1, 1, EstadoPedido.CREADO, "Dir 1", LocalDateTime.now(), 50.0, Arrays.asList(new Detalle(1, 1, 2, 10.0, 20.0, null)));
-        Pedido p2 = new Pedido(2, 2, EstadoPedido.PROCESANDO, "Dir 2", LocalDateTime.now(), 30.0, Arrays.asList(new Detalle(2, 2, 1, 15.0, 15.0, null)));
+        Pedido p1 = new Pedido(1, 1, EstadoPedido.CREADO, "Dir 1", LocalDateTime.now(), 50.0, Arrays.asList(new Detalle(1L, 1, 2, 10.0, 20.0, null)));
+        Pedido p2 = new Pedido(2, 2, EstadoPedido.PROCESANDO, "Dir 2", LocalDateTime.now(), 30.0, Arrays.asList(new Detalle(2L, 2, 1, 15.0, 15.0, null)));
         List<Pedido> expectedPedidos = Arrays.asList(p1, p2);
 
         when(pedidoRepository.findAll()).thenReturn(expectedPedidos);
@@ -45,8 +45,8 @@ public class TestPedidoService {
 
     @Test
     void testGuardar() {
-        Pedido pedido = new Pedido(0, 1, EstadoPedido.CREADO, "Dir 1", LocalDateTime.now(), 50.0, Arrays.asList(new Detalle(0, 1, 2, 10.0, 20.0, null)));
-        Pedido pedidoGuardado = new Pedido(1, 1, EstadoPedido.CREADO, "Dir 1", LocalDateTime.now(), 50.0, Arrays.asList(new Detalle(1, 1, 2, 10.0, 20.0, null)));
+        Pedido pedido = new Pedido(0, 1, EstadoPedido.CREADO, "Dir 1", LocalDateTime.now(), 50.0, Arrays.asList(new Detalle(null, 1, 2, 10.0, 20.0, null)));
+        Pedido pedidoGuardado = new Pedido(1, 1, EstadoPedido.CREADO, "Dir 1", LocalDateTime.now(), 50.0, Arrays.asList(new Detalle(    1L, 1, 2, 10.0, 20.0, null)));
 
         when(pedidoRepository.save(pedido)).thenReturn(pedidoGuardado);
 
@@ -59,8 +59,8 @@ public class TestPedidoService {
 
     @Test
     void testActualizarEstado() {
-        Pedido pedido = new Pedido(1, 1, EstadoPedido.CREADO, "Dir 1", LocalDateTime.now(), 50.0, Arrays.asList(new Detalle(1, 1, 2, 10.0, 20.0, null)));
-        Pedido pedidoActualizado = new Pedido(1, 1, EstadoPedido.PROCESANDO, "Dir 1", LocalDateTime.now(), 50.0, Arrays.asList(new Detalle(1, 1, 2, 10.0, 20.0, null)));
+        Pedido pedido = new Pedido(1, 1, EstadoPedido.CREADO, "Dir 1", LocalDateTime.now(), 50.0, Arrays.asList(new Detalle(1L, 1, 2, 10.0, 20.0, null)));
+        Pedido pedidoActualizado = new Pedido(1, 1, EstadoPedido.PROCESANDO, "Dir 1", LocalDateTime.now(), 50.0, Arrays.asList(new Detalle(1L, 1, 2, 10.0, 20.0, null)));
 
         when(pedidoRepository.findById(1)).thenReturn(Optional.of(pedido));
         when(pedidoRepository.save(pedido)).thenReturn(pedidoActualizado);
