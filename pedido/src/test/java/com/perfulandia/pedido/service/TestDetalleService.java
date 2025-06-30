@@ -33,8 +33,8 @@ public class TestDetalleService {
 
     @Test
     void testDetalles() {
-        Detalle d1 = new Detalle(1L, 1, 2, 10.0, 20.0, new Pedido(1, 1, null, "Dir 1", null, 0.0, null));
-        Detalle d2 = new Detalle(2L, 2, 1, 15.0, 15.0, new Pedido(2, 2, null, "Dir 2", null, 0.0, null));
+        Detalle d1 = new Detalle(1L, 1, 2, 10.0, 20.0, new Pedido(1L, 1, null, "Dir 1", null, 0.0, null));
+        Detalle d2 = new Detalle(2L, 2, 1, 15.0, 15.0, new Pedido(2L, 2, null, "Dir 2", null, 0.0, null));
         List<Detalle> expectedDetalles = Arrays.asList(d1, d2);
 
         when(detalleRepository.findAll()).thenReturn(expectedDetalles);
@@ -46,11 +46,11 @@ public class TestDetalleService {
 
     @Test
     void testGuardar() {
-        Pedido pedido = new Pedido(1, 1, null, "Dir 1", null, 0.0, null);
+        Pedido pedido = new Pedido(1L, 1, null, "Dir 1", null, 0.0, null);
         Detalle detalle = new Detalle(null, 1, 2, 10.0, 20.0, pedido);
         Detalle detalleGuardado = new Detalle(1L, 1, 2, 10.0, 20.0, pedido);
 
-        when(pedidoRepository.existsById(1)).thenReturn(true);
+        when(pedidoRepository.existsById(1L)).thenReturn(true);
         when(detalleRepository.save(detalle)).thenReturn(detalleGuardado);
 
         Detalle resultado = detalleService.guardar(detalle);

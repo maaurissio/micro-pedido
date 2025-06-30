@@ -1,6 +1,6 @@
 package com.perfulandia.pedido.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -31,7 +31,7 @@ public class Detalle {
     private double precioUnitario; //Precio unitario del producto
     private double subTotal; //SubTotal del detalle (cantidad * precioUnitario)
 
-    @JsonIgnore
+    @JsonBackReference
     @ManyToOne()
     @JoinColumn(name = "idPedido")
     private Pedido pedido;
