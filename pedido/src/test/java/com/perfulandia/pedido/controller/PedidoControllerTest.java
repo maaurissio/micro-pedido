@@ -42,8 +42,8 @@ class PedidoControllerTest {
     @Test
     void testGetPedidos_OK() throws Exception {
         List<Pedido> pedidos = Arrays.asList(
-            new Pedido(1L, 100, EstadoPedido.CREADO, "Calle 123", LocalDateTime.now(), 150.00, null),
-            new Pedido(2L, 200, EstadoPedido.PROCESANDO, "Calle 456", LocalDateTime.now(), 200.00, null)
+            new Pedido(1L, 100, EstadoPedido.CREADO, "Calle 123", LocalDateTime.now(), 150.00),
+            new Pedido(2L, 200, EstadoPedido.PROCESANDO, "Calle 456", LocalDateTime.now(), 200.00)
         );
         when(pedidoService.pedidos()).thenReturn(pedidos);
 
@@ -61,8 +61,8 @@ class PedidoControllerTest {
 
     @Test
     void testGuardar_Created() throws Exception {
-        Pedido pedido = new Pedido(0L, 100, EstadoPedido.CREADO, "Calle 123", null, 150.00, null);
-        Pedido pedidoGuardado = new Pedido(1L, 100, EstadoPedido.CREADO, "Calle 123", LocalDateTime.now(), 150.00, null);
+        Pedido pedido = new Pedido(0L, 100, EstadoPedido.CREADO, "Calle 123", null, 150.00);
+        Pedido pedidoGuardado = new Pedido(1L, 100, EstadoPedido.CREADO, "Calle 123", LocalDateTime.now(), 150.00);
         
         when(pedidoService.guardar(any(Pedido.class))).thenReturn(pedidoGuardado);
 
@@ -74,7 +74,7 @@ class PedidoControllerTest {
 
     @Test
     void testActualizarEstado_OK() throws Exception {
-        Pedido pedidoActualizado = new Pedido(1L, 100, EstadoPedido.PROCESANDO, "Calle 123", LocalDateTime.now(), 150.00, null);
+        Pedido pedidoActualizado = new Pedido(1L, 100, EstadoPedido.PROCESANDO, "Calle 123", LocalDateTime.now(), 150.00);
         
         when(pedidoService.actualizarEstado(eq(1L), eq(EstadoPedido.PROCESANDO))).thenReturn(pedidoActualizado);
 
@@ -86,7 +86,7 @@ class PedidoControllerTest {
 
     @Test
     void testGetPedidoPorId_OK() throws Exception {
-        Pedido pedido = new Pedido(1L, 100, EstadoPedido.CREADO, "Calle 123", LocalDateTime.now(), 150.00, null);
+        Pedido pedido = new Pedido(1L, 100, EstadoPedido.CREADO, "Calle 123", LocalDateTime.now(), 150.00);
         when(pedidoService.buscarPorId(1L)).thenReturn(Optional.of(pedido));
 
         mockMvc.perform(get("/api/pedido/1"))

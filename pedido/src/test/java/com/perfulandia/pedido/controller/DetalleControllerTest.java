@@ -44,8 +44,8 @@ class DetalleControllerTest {
         pedido2.setIdPedido(1L);
         
         List<Detalle> detalles = Arrays.asList(
-            new Detalle(1L, 100, 2, 25.50, 51.00, pedido1),
-            new Detalle(2L, 200, 1, 30.00, 30.00, pedido2)
+            new Detalle(1L, 100, 2, 25.50, 51.00, null, pedido1),
+            new Detalle(2L, 200, 1, 30.00, 30.00, null, pedido2)
         );
         when(detalleService.detalles()).thenReturn(detalles);
 
@@ -66,8 +66,8 @@ class DetalleControllerTest {
         Pedido pedido = new Pedido();
         pedido.setIdPedido(1L);
         
-        Detalle detalle = new Detalle(0L, 100, 2, 25.50, 51.00, pedido);
-        Detalle detalleGuardado = new Detalle(1L, 100, 2, 25.50, 51.00, pedido);
+        Detalle detalle = new Detalle(0L, 100, 2, 25.50, 51.00, null, pedido);
+        Detalle detalleGuardado = new Detalle(1L, 100, 2, 25.50, 51.00, null, pedido);
         
         when(detalleService.guardar(any(Detalle.class))).thenReturn(detalleGuardado);
 
@@ -82,7 +82,7 @@ class DetalleControllerTest {
         Pedido pedido = new Pedido();
         pedido.setIdPedido(1L);
         
-        Detalle detalle = new Detalle(1L, 100, 2, 25.50, 51.00, pedido);
+        Detalle detalle = new Detalle(1L, 100, 2, 25.50, 51.00, null, pedido);
         when(detalleService.buscarPorId(1L)).thenReturn(Optional.of(detalle));
 
         mockMvc.perform(get("/api/detalle/1"))

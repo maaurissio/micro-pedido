@@ -24,11 +24,17 @@ public class DetalleService {
     }
 
     public Detalle guardar(Detalle detalle) {
-        // Validar que el idPedido del Pedido asociado exista
-        if (detalle.getPedido() != null && detalle.getPedido().getIdPedido() != 0 &&
-            !pedidoRepository.existsById(detalle.getPedido().getIdPedido())) {
-            throw new RuntimeException("No existe un Pedido con el ID " + detalle.getPedido().getIdPedido());
+        // Validar que el idPedido exista
+        if (detalle.getIdPedido() != null && 
+            !pedidoRepository.existsById(detalle.getIdPedido())) {
+            throw new RuntimeException("No existe un Pedido con el ID " + detalle.getIdPedido());
         }
+        
+        // Buscar y asignar el pedido
+        if (detalle.getIdPedido() != null) {
+            pedidoRepository.findById(detalle.getIdPedido()).ifPresent(detalle::setPedido);
+        }
+        
         return detalleRepository.save(detalle);
     }
 
