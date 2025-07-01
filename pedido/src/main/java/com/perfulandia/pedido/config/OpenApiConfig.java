@@ -14,7 +14,7 @@ public class OpenApiConfig {
         return new OpenAPI()
                 .info(new Info()
                         .title("API de Pedidos")
-                        .version("1.0")
+                        .version("1.0 y ultima")
                         .description("API REST para gestión de pedidos"));
     }
 }

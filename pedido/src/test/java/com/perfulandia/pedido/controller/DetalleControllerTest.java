@@ -37,7 +37,7 @@ class DetalleControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    void testGetDetalles_OK() throws Exception {
+    void testGetDetalles_OK() throws Exception {    // Debe devolver 200 OK cuando existen detalles
         Pedido pedido1 = new Pedido();
         pedido1.setIdPedido(1L);
         Pedido pedido2 = new Pedido();
@@ -54,7 +54,7 @@ class DetalleControllerTest {
     }
 
     @Test
-    void testGetDetalles_NoContent() throws Exception {
+    void testGetDetalles_NoContent() throws Exception { // Debe devolver 204 No Content cuando la lista está vacía
         when(detalleService.detalles()).thenReturn(List.of());
 
         mockMvc.perform(get("/api/detalle"))
@@ -62,7 +62,7 @@ class DetalleControllerTest {
     }
 
     @Test
-    void testGuardar_Created() throws Exception {
+    void testGuardar_Created() throws Exception {   // Debe devolver 201 Created cuando se crea un detalle exitosamente
         Pedido pedido = new Pedido();
         pedido.setIdPedido(1L);
         
@@ -78,7 +78,7 @@ class DetalleControllerTest {
     }
 
     @Test
-    void testGetDetallePorId_OK() throws Exception {
+    void testGetDetallePorId_OK() throws Exception {    // Debe devolver 200 OK cuando encuentra el detalle por ID
         Pedido pedido = new Pedido();
         pedido.setIdPedido(1L);
         
@@ -90,7 +90,7 @@ class DetalleControllerTest {
     }
 
     @Test
-    void testGetDetallePorId_NotFound() throws Exception {
+    void testGetDetallePorId_NotFound() throws Exception { // Debe devolver 404 Not Found cuando no encuentra el detalle por ID
         when(detalleService.buscarPorId(1L)).thenReturn(Optional.empty());
 
         mockMvc.perform(get("/api/detalle/1"))
@@ -98,7 +98,7 @@ class DetalleControllerTest {
     }
 
     @Test
-    void testEliminarDetalle_NoContent() throws Exception {
+    void testEliminarDetalle_NoContent() throws Exception { // Debe devolver 204 No Content cuando elimina exitosamente
         doNothing().when(detalleService).eliminarDetalle(1L);
 
         mockMvc.perform(delete("/api/detalle/1"))
@@ -106,7 +106,7 @@ class DetalleControllerTest {
     }
 
     @Test
-    void testEliminarDetalle_BadRequest() throws Exception {
+    void testEliminarDetalle_BadRequest() throws Exception {// Debe devolver 400 Bad Request cuando hay error al eliminar)
         doThrow(new IllegalArgumentException("Detalle no encontrado"))
                 .when(detalleService).eliminarDetalle(1L);
 

@@ -40,7 +40,8 @@ class PedidoControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    void testGetPedidos_OK() throws Exception {
+    void testGetPedidos_OK() throws Exception { // Debe devolver 200 OK cuando existen pedidos
+        
         List<Pedido> pedidos = Arrays.asList(
             new Pedido(1L, 100, EstadoPedido.CREADO, "Calle 123", LocalDateTime.now(), 150.00),
             new Pedido(2L, 200, EstadoPedido.PROCESANDO, "Calle 456", LocalDateTime.now(), 200.00)
@@ -52,7 +53,8 @@ class PedidoControllerTest {
     }
 
     @Test
-    void testGetPedidos_NoContent() throws Exception {
+    void testGetPedidos_NoContent() throws Exception {// Debe devolver 204 No Content cuando la lista está vacía
+        
         when(pedidoService.pedidos()).thenReturn(List.of());
 
         mockMvc.perform(get("/api/pedido"))
@@ -60,7 +62,7 @@ class PedidoControllerTest {
     }
 
     @Test
-    void testGuardar_Created() throws Exception {
+    void testGuardar_Created() throws Exception {   // Debe devolver 201 Created cuando se crea un pedido exitosamente
         Pedido pedido = new Pedido(0L, 100, EstadoPedido.CREADO, "Calle 123", null, 150.00);
         Pedido pedidoGuardado = new Pedido(1L, 100, EstadoPedido.CREADO, "Calle 123", LocalDateTime.now(), 150.00);
         
@@ -73,7 +75,7 @@ class PedidoControllerTest {
     }
 
     @Test
-    void testActualizarEstado_OK() throws Exception {
+    void testActualizarEstado_OK() throws Exception { // Debe devolver 200 OK cuando actualiza el estado exitosamente
         Pedido pedidoActualizado = new Pedido(1L, 100, EstadoPedido.PROCESANDO, "Calle 123", LocalDateTime.now(), 150.00);
         
         when(pedidoService.actualizarEstado(eq(1L), eq(EstadoPedido.PROCESANDO))).thenReturn(pedidoActualizado);
@@ -85,7 +87,7 @@ class PedidoControllerTest {
     }
 
     @Test
-    void testGetPedidoPorId_OK() throws Exception {
+    void testGetPedidoPorId_OK() throws Exception { // Debe devolver 200 OK cuando encuentra el pedido por ID
         Pedido pedido = new Pedido(1L, 100, EstadoPedido.CREADO, "Calle 123", LocalDateTime.now(), 150.00);
         when(pedidoService.buscarPorId(1L)).thenReturn(Optional.of(pedido));
 
@@ -94,7 +96,7 @@ class PedidoControllerTest {
     }
 
     @Test
-    void testGetPedidoPorId_NotFound() throws Exception {
+    void testGetPedidoPorId_NotFound() throws Exception { // Debe devolver 404 Not Found cuando no encuentra el pedido por ID
         when(pedidoService.buscarPorId(1L)).thenReturn(Optional.empty());
 
         mockMvc.perform(get("/api/pedido/1"))
@@ -102,7 +104,7 @@ class PedidoControllerTest {
     }
 
     @Test
-    void testEliminarPedido_NoContent() throws Exception {
+    void testEliminarPedido_NoContent() throws Exception { // Debe devolver 204 No Content cuando elimina exitosamente
         doNothing().when(pedidoService).eliminarPedido(1L);
 
         mockMvc.perform(delete("/api/pedido/1"))
@@ -110,7 +112,7 @@ class PedidoControllerTest {
     }
 
     @Test
-    void testEliminarPedido_BadRequest() throws Exception {
+    void testEliminarPedido_BadRequest() throws Exception { // Debe devolver 400 Bad Request cuando hay error al eliminar (pedido no encontrado)
         doThrow(new IllegalArgumentException("Pedido no encontrado"))
                 .when(pedidoService).eliminarPedido(1L);
 

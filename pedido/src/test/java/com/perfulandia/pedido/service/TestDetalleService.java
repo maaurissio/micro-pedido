@@ -3,6 +3,7 @@ package com.perfulandia.pedido.service;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
@@ -52,10 +53,11 @@ public class TestDetalleService {
     @Test
     void testGuardar() {
         Pedido pedido = new Pedido(1L, 1, null, "Dir 1", null, 0.0);
-        Detalle detalle = new Detalle(null, 1, 2, 10.0, 20.0, null, pedido);
-        Detalle detalleGuardado = new Detalle(1L, 1, 2, 10.0, 20.0, null, pedido);
+        Detalle detalle = new Detalle(null, 1, 2, 10.0, 20.0, 1L, null);
+        Detalle detalleGuardado = new Detalle(1L, 1, 2, 10.0, 20.0, 1L, pedido);
 
         when(pedidoRepository.existsById(1L)).thenReturn(true);
+        when(pedidoRepository.findById(1L)).thenReturn(Optional.of(pedido));
         when(detalleRepository.save(detalle)).thenReturn(detalleGuardado);
 
         Detalle resultado = detalleService.guardar(detalle);
